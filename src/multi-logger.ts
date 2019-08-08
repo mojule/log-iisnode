@@ -1,5 +1,4 @@
 import { Logger, LogLevel } from '@mojule/log-formatter/src/types'
-import { createLogger } from '@mojule/log-formatter'
 
 export const multiLogger = ( ...loggers: Logger[] ) => {
   const logMany = ( logLevel: LogLevel ) =>
@@ -17,9 +16,9 @@ export const multiLogger = ( ...loggers: Logger[] ) => {
   const error = logMany( 'error')
   const fatal = logMany( 'fatal' )
 
-  const options = {
+  const logger = {
     trace, debug, time, info, warn, error, fatal
   }
 
-  return createLogger( options )
+  return logger
 }
