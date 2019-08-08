@@ -8,9 +8,15 @@ import {
 } from './env'
 
 import { logInitMessage } from './log-init-message'
+import { multiLogger } from './multi-logger';
 
 const directory = join( process.cwd(), loggingDirectory )
-const iisNodeLogger = isLoggingEnabledIISNode ? logger : fsLogger( directory )
+
+const iisNodeLogger = (
+  isLoggingEnabledIISNode ?
+    logger :
+    multiLogger( logger, fsLogger( directory ) )
+)
 
 export const log = removeLoggersBelowLevel( logLevel, iisNodeLogger )
 
