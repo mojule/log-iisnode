@@ -1,10 +1,10 @@
 import { Logger } from '@mojule/log-formatter/src/types';
 export declare const multiLogger: (...loggers: Logger[]) => {
-    trace: (content: string) => void;
-    debug: (content: string) => void;
-    time: (content: string) => void;
-    info: (content: string) => void;
-    warn: (content: string) => void;
-    error: (content: string) => void;
-    fatal: (content: string) => void;
+    trace: (message?: any, ...args: any) => void;
+    debug: (message?: any, ...args: any) => void;
+    time: (message?: any, ...args: any) => void;
+    info: (message?: any, ...args: any) => void;
+    warn: (message?: any, ...args: any) => void;
+    error: (message?: any, ...args: any) => void;
+    fatal: (message?: any, ...args: any) => void;
 };

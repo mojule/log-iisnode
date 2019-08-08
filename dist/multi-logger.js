@@ -1,9 +1,9 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.multiLogger = (...loggers) => {
-    const logMany = (logLevel) => (content) => {
+    const logMany = (logLevel) => (message, ...args) => {
         loggers.forEach(logger => {
-            logger[logLevel](content);
+            logger[logLevel](message, ...args);
         });
     };
     const trace = logMany('trace');

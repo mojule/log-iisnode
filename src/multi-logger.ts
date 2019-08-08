@@ -2,9 +2,9 @@ import { Logger, LogLevel } from '@mojule/log-formatter/src/types'
 
 export const multiLogger = ( ...loggers: Logger[] ) => {
   const logMany = ( logLevel: LogLevel ) =>
-    ( content: string ) => {
+    ( message?: any, ...args: any ) => {
       loggers.forEach( logger => {
-        logger[ logLevel ]( content )
+        logger[ logLevel ]( message, ...args )
       } )
     }
 
