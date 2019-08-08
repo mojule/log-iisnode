@@ -30,7 +30,13 @@ export const fsLogger = ( directory: string ) => {
 }
 
 const ensureDirectory = ( directory: string ) => {
-  if ( statSync( directory ).isDirectory ) return
+  try {
+    if ( statSync( directory ).isDirectory ) return
+  } catch( err ){
+    if( err.code !== 'ENOENT' ){
+      throw err
+    }
+  }
 
   mkdirSync( directory )
 }

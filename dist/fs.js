@@ -24,8 +24,15 @@ exports.fsLogger = (directory) => {
     return logger;
 };
 const ensureDirectory = (directory) => {
-    if (fs_1.statSync(directory).isDirectory)
-        return;
+    try {
+        if (fs_1.statSync(directory).isDirectory)
+            return;
+    }
+    catch (err) {
+        if (err.code !== 'ENOENT') {
+            throw err;
+        }
+    }
     fs_1.mkdirSync(directory);
 };
 const append = (path, data) => fs_1.appendFile(path, data + '\n', 'utf8', err => {
