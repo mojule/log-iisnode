@@ -1,0 +1,18 @@
+import { LogLevel } from '@mojule/log-formatter/src/types';
+export declare const logLevelKey = "LOG_LEVEL";
+export declare const defaultLogLevel: LogLevel;
+export declare const runtimeEnv: string;
+export declare const isHostedInIISNode: boolean;
+export declare const isLoggingEnabledIISNode: boolean;
+export declare const loggingDirectory: string;
+export declare let badArgLevel: string;
+export declare let badEnvLevel: string;
+export declare let isArgLevel: boolean;
+export declare let isEnvLevel: boolean;
+export declare let logLevel: LogLevel;
+export declare const argSource: string;
+export declare const envSource: string;
+export declare const argLevel: any;
+export declare const envLevel: string | undefined;
+export declare const levelSource: string;
+export declare const logName: string;
