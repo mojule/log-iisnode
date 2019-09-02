@@ -1,6 +1,6 @@
 {
   "name": "@mojule/log-iisnode",
-  "version": "0.1.3",
+  "version": "0.1.4",
   "description": "Logging under IISNode with fallback to FS for local debugging",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
@@ -23,7 +23,7 @@
     "@types/yargs-parser": "^13.0.0"
   },
   "dependencies": {
-    "@mojule/log-formatter": "^0.2.0",
+    "@mojule/log-formatter": "^0.2.1",
     "yargs-parser": "^13.1.1"
   }
 }
