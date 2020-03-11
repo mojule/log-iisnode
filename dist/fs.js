@@ -3,9 +3,11 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const fs_1 = require("fs");
 const path_1 = require("path");
 const log_formatter_1 = require("@mojule/log-formatter");
-exports.fsLogger = (directory) => {
+const util_1 = require("./util");
+exports.fsLogger = (directory, useLocalTime = false) => {
     ensureDirectory(directory);
-    const date = (new Date()).toJSON().replace(/[:\.]/g, '-');
+    const getTimestamp = (useLocalTime ? util_1.getLocalTimestamp : () => (new Date()).toJSON());
+    const date = getTimestamp().replace(/[:\.]/g, '-');
     const stdOut = path_1.join(directory, `stdout-${date}.txt`);
     const stdErr = path_1.join(directory, `stderr-${date}.txt`);
     const writeOut = (content) => append(stdOut, content);
@@ -18,7 +20,7 @@ exports.fsLogger = (directory) => {
     const error = writeErr;
     const fatal = writeErr;
     const options = {
-        trace, debug, time, info, warn, error, fatal
+        trace, debug, time, info, warn, error, fatal, getTimestamp
     };
     const logger = log_formatter_1.createLogger(options);
     return logger;

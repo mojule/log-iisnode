@@ -1,3 +1,4 @@
 import { Logger } from '@mojule/log-formatter/src/types';
-export declare const isAtLevelOrAbove: (level: import("@mojule/log-formatter/dist/types").LogLevel, minLevel: import("@mojule/log-formatter/dist/types").LogLevel) => boolean;
-export declare const removeLoggersBelowLevel: (minLevel: import("@mojule/log-formatter/dist/types").LogLevel, logger: Logger) => Logger;
+export declare const isAtLevelOrAbove: (level: "error" | "time" | "trace" | "debug" | "info" | "warn" | "fatal", minLevel: "error" | "time" | "trace" | "debug" | "info" | "warn" | "fatal") => boolean;
+export declare const removeLoggersBelowLevel: (minLevel: "error" | "time" | "trace" | "debug" | "info" | "warn" | "fatal", logger: Logger) => Logger;
+export declare const getLocalTimestamp: () => string;

@@ -1,11 +1,16 @@
 import { statSync, mkdirSync, appendFile } from 'fs'
 import { join } from 'path'
 import { createLogger } from '@mojule/log-formatter'
+import { getLocalTimestamp } from './util'
 
-export const fsLogger = ( directory: string ) => {
+export const fsLogger = ( directory: string, useLocalTime = false ) => {
   ensureDirectory( directory )
 
-  const date = ( new Date() ).toJSON().replace( /[:\.]/g, '-' )
+  const getTimestamp = (
+    useLocalTime ? getLocalTimestamp : () => ( new Date() ).toJSON()
+  )
+
+  const date = getTimestamp().replace( /[:\.]/g, '-' )
   const stdOut = join( directory, `stdout-${ date }.txt` )
   const stdErr = join( directory, `stderr-${ date }.txt` )
 
@@ -21,7 +26,7 @@ export const fsLogger = ( directory: string ) => {
   const fatal = writeErr
 
   const options = {
-    trace, debug, time, info, warn, error, fatal
+    trace, debug, time, info, warn, error, fatal, getTimestamp
   }
 
   const logger = createLogger( options )

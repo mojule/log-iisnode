@@ -15,4 +15,9 @@ exports.removeLoggersBelowLevel = (minLevel, logger) => {
     });
     return Object.assign({}, logger, noops);
 };
+exports.getLocalTimestamp = () => {
+    const date = new Date();
+    const localTime = date.getTime() - (date.getTimezoneOffset() * 60000);
+    return new Date(localTime).toJSON();
+};
 //# sourceMappingURL=util.js.map
