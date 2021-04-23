@@ -11,10 +11,11 @@ const multi_logger_1 = require("./multi-logger");
 const directory = path_1.join(process.cwd(), env_1.loggingDirectory);
 const createLog = (useLocalTime = true) => {
     const getTimestamp = (useLocalTime ? util_1.getLocalTimestamp : () => (new Date()).toJSON());
-    const logger = log_formatter_1.createLogger({ getTimestamp });
+    const options = Object.assign({}, log_formatter_1.defaultCreateLoggerOptions, { getTimestamp });
+    const logger = log_formatter_1.createLogger(options);
     const iisNodeLogger = (env_1.isLoggingEnabledIISNode ?
         logger :
-        multi_logger_1.multiLogger(logger, fs_1.fsLogger(directory)));
+        multi_logger_1.multiLogger(logger, fs_1.fsLogger(directory, useLocalTime)));
     const log = util_1.removeLoggersBelowLevel(env_1.logLevel, iisNodeLogger);
     return log;
 };

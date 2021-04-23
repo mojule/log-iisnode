@@ -1,5 +1,5 @@
 import { join } from 'path'
-import { createLogger } from '@mojule/log-formatter'
+import { createLogger, defaultCreateLoggerOptions } from '@mojule/log-formatter'
 import { fsLogger } from './fs'
 import { removeLoggersBelowLevel, getLocalTimestamp } from './util'
 
@@ -17,12 +17,16 @@ const createLog = ( useLocalTime = true ) => {
     useLocalTime ? getLocalTimestamp : () => ( new Date() ).toJSON()
   )
 
-  const logger = createLogger( { getTimestamp } )
+  const options = Object.assign(
+    {}, defaultCreateLoggerOptions, { getTimestamp }
+  )
+
+  const logger = createLogger( options )
 
   const iisNodeLogger = (
     isLoggingEnabledIISNode ?
       logger :
-      multiLogger( logger, fsLogger( directory ) )
+      multiLogger( logger, fsLogger( directory, useLocalTime ) )
   )
 
   const log = removeLoggersBelowLevel( logLevel, iisNodeLogger )
