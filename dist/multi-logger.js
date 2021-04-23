@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.multiLogger = (...loggers) => {
+exports.multiLogger = void 0;
+const multiLogger = (...loggers) => {
     const logMany = (logLevel) => (message, ...args) => {
         loggers.forEach(logger => {
             logger[logLevel](message, ...args);
@@ -18,4 +19,5 @@ exports.multiLogger = (...loggers) => {
     };
     return logger;
 };
+exports.multiLogger = multiLogger;
 //# sourceMappingURL=multi-logger.js.map

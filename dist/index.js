@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.log = void 0;
 const path_1 = require("path");
 const log_formatter_1 = require("@mojule/log-formatter");
 const fs_1 = require("./fs");

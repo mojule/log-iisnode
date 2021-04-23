@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.logInitMessage = void 0;
 const package_1 = require("./package");
 const env_1 = require("./env");
 const logInitInfo = [

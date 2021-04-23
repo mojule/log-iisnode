@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.logName = exports.levelSource = exports.envLevel = exports.argLevel = exports.envSource = exports.argSource = exports.logLevel = exports.isEnvLevel = exports.isArgLevel = exports.badEnvLevel = exports.badArgLevel = exports.loggingDirectory = exports.isLoggingEnabledIISNode = exports.isHostedInIISNode = exports.runtimeEnv = exports.defaultLogLevel = exports.logLevelKey = void 0;
 const parseArgs = require("yargs-parser");
 const log_formatter_1 = require("@mojule/log-formatter");
 const argv = parseArgs(process.argv.slice(2));

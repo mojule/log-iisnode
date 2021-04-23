@@ -36,7 +36,7 @@ export const fsLogger = ( directory: string, useLocalTime = false ) => {
 
 const ensureDirectory = ( directory: string ) => {
   try {
-    if ( statSync( directory ).isDirectory ) return
+    if ( statSync( directory ).isDirectory() ) return
   } catch( err ){
     if( err.code !== 'ENOENT' ){
       throw err

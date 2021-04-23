@@ -1,10 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.fsLogger = void 0;
 const fs_1 = require("fs");
 const path_1 = require("path");
 const log_formatter_1 = require("@mojule/log-formatter");
 const util_1 = require("./util");
-exports.fsLogger = (directory, useLocalTime = false) => {
+const fsLogger = (directory, useLocalTime = false) => {
     ensureDirectory(directory);
     const getTimestamp = (useLocalTime ? util_1.getLocalTimestamp : () => (new Date()).toJSON());
     const date = getTimestamp().replace(/[:\.]/g, '-');
@@ -25,9 +26,10 @@ exports.fsLogger = (directory, useLocalTime = false) => {
     const logger = log_formatter_1.createLogger(options);
     return logger;
 };
+exports.fsLogger = fsLogger;
 const ensureDirectory = (directory) => {
     try {
-        if (fs_1.statSync(directory).isDirectory)
+        if (fs_1.statSync(directory).isDirectory())
             return;
     }
     catch (err) {
