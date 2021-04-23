@@ -1,4 +1,4 @@
-import { statSync, mkdirSync, appendFile } from 'fs'
+import { statSync, mkdirSync, appendFileSync } from 'fs'
 import { join } from 'path'
 import { createLogger } from '@mojule/log-formatter'
 import { getLocalTimestamp } from './util'
@@ -46,8 +46,6 @@ const ensureDirectory = ( directory: string ) => {
   mkdirSync( directory )
 }
 
-const append = ( path, data ) => appendFile(
-  path, data + '\n', 'utf8', err => {
-    if ( err ) console.error( err )
-  }
+const append = ( path: string, data: string ) => appendFileSync(
+  path, data + '\n', 'utf8'
 )

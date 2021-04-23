@@ -39,8 +39,5 @@ const ensureDirectory = (directory) => {
     }
     fs_1.mkdirSync(directory);
 };
-const append = (path, data) => fs_1.appendFile(path, data + '\n', 'utf8', err => {
-    if (err)
-        console.error(err);
-});
+const append = (path, data) => fs_1.appendFileSync(path, data + '\n', 'utf8');
 //# sourceMappingURL=fs.js.map
