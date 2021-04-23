@@ -1,6 +1,6 @@
 {
   "name": "@mojule/log-iisnode",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Logging under IISNode with fallback to FS for local debugging",
   "main": "./dist/index.js",
   "typings": "./dist/index.d.ts",
